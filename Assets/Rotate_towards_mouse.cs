@@ -8,6 +8,10 @@ public class Rotate_towards_mouse : MonoBehaviour
     public float rotationSpeed = 5f;
 
     void Update() {
+        Rotate();
+    }
+
+    void Rotate() {
         // Get the mouse position in screen coordinates
         Vector3 mousePosition = Input.mousePosition;
 
