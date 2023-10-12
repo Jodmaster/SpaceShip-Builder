@@ -9,7 +9,10 @@ public class ship_movement : MonoBehaviour
 
     
     [SerializeField] float moveSpeed = 5.0f;
-    [SerializeField] float rotationSpeed = 50f;
+    [SerializeField] float rotationSpeed = 5f;
+    [SerializeField] float rotationInertia = 0.9f;
+
+    private float currentRotationSpeed = 0.0f;
     
     // Start is called before the first frame update
     void Start()
@@ -25,7 +28,13 @@ public class ship_movement : MonoBehaviour
         //Input handling
         if (Input.GetKey(KeyCode.W)) {rigidBody.AddForce(transform.up * moveSpeed, ForceMode2D.Force);}
         if (Input.GetKey(KeyCode.S)) {rigidBody.AddForce(-transform.up * moveSpeed, ForceMode2D.Force);}
-        if (Input.GetKey(KeyCode.A)) {transform.RotateAround(pivot.transform.position, new Vector3(0,0,1) ,Time.deltaTime * rotationSpeed);}
-        if (Input.GetKey(KeyCode.D)) {transform.RotateAround(pivot.transform.position, new Vector3(0, 0, -1), Time.deltaTime * rotationSpeed);}
+            
+        float rotationInput = Input.GetAxis("Horizontal");
+        float desiredRotationSpeed = rotationInput * rotationSpeed;
+
+        currentRotationSpeed = Mathf.Lerp(currentRotationSpeed, desiredRotationSpeed, 1.0f - rotationInertia);
+
+        transform.RotateAround(pivot.transform.position, Vector3.forward, -currentRotationSpeed * Time.deltaTime);
+        
     }
 }

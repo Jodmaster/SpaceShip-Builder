@@ -6,8 +6,16 @@ public class Rotate_towards_mouse : MonoBehaviour
 {
     // Speed at which the object rotates towards the mouse
     public float rotationSpeed = 5f;
+    public Camera activeCam;
+
+    public game_manager manager;
+
+    private void Start() {
+        manager = FindObjectOfType<game_manager>();
+    }
 
     void Update() {
+        activeCam = manager.selectedCam();
         Rotate();
     }
 
@@ -16,7 +24,7 @@ public class Rotate_towards_mouse : MonoBehaviour
         Vector3 mousePosition = Input.mousePosition;
 
         // Convert the mouse position to world coordinates
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector3 mouseWorldPosition = activeCam.ScreenToWorldPoint(mousePosition);
 
         // Calculate the direction from the object to the mouse
         Vector3 directionToMouse = mouseWorldPosition - transform.position;

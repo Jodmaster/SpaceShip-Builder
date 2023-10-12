@@ -53,4 +53,16 @@ public class game_manager : MonoBehaviour
             Debug.Log("Main cam is: " + Camera.main);
         }
     }
+
+    public Camera selectedCam() {
+        Camera activeCam;
+
+        if(main_cam.enabled == true) {
+            activeCam = main_cam;
+        } else {
+            activeCam = ship_cam;
+        }
+
+        return activeCam;
+    }
 }
