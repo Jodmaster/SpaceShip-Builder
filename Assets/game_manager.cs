@@ -43,14 +43,19 @@ public class game_manager : MonoBehaviour
     }
 
     void changeCams() {
-        if(selected != null) {
-            main_cam.enabled = false;
+        if (selected != null)
+        {
             ship_cam.enabled = true;
-            Debug.Log("Main cam is: " + Camera.main);
-        } else {
-            ship_cam.enabled = false;
+            main_cam.enabled = false;
+            
+            Debug.Log("Main cam is: ship cam");
+        }
+        else
+        {
             main_cam.enabled = true;
-            Debug.Log("Main cam is: " + Camera.main);
+            ship_cam.enabled = false;
+            
+            Debug.Log("Main cam is: main cam");
         }
     }
 

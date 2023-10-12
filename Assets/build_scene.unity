@@ -409,7 +409,6 @@ GameObject:
   m_Component:
   - component: {fileID: 194534012}
   - component: {fileID: 194534011}
-  - component: {fileID: 194534010}
   - component: {fileID: 194534013}
   m_Layer: 0
   m_Name: Ship_camera
@@ -418,14 +417,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &194534010
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194534009}
-  m_Enabled: 0
 --- !u!20 &194534011
 Camera:
   m_ObjectHideFlags: 0
@@ -490,7 +481,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &194534013
 MonoBehaviour:
@@ -505,7 +496,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   follow_target: {fileID: 840887465}
+  shipCamera: {fileID: 194534011}
   camera_height: -10
+  zoomSpeed: 2
+  minZoom: 1
+  maxZoom: 20
 --- !u!1 &742757172
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +546,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &840887465
 GameObject:
@@ -705,7 +700,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e041e244ca28d234f8244139a55624b4, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e041e244ca28d234f8244139a55624b4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -879,7 +874,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1231127830
 GameObject:
