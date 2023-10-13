@@ -6,6 +6,8 @@ public class ship_manager : MonoBehaviour
 {
 
     public bool isSelected;
+    public bool isBuilding;
+    
     BoxCollider2D boxCollider;
     game_manager manager;
 
@@ -20,10 +22,22 @@ public class ship_manager : MonoBehaviour
     // Update is called once per frame
     void Update() {
         checkSelected();
+        checkInBuild();
     }
 
-    private void checkSelected() {
-        if (manager.selected == this) {
+    public void checkInBuild()
+    {
+        if (manager.in_build_mode)
+        {
+            isBuilding = true;
+        } else
+        {
+            isBuilding = false;
+        }
+    }
+
+    public void checkSelected() {
+        if (manager.selected == gameObject) {
             isSelected = true;
         }
         else {

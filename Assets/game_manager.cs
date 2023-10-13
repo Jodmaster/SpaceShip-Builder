@@ -8,18 +8,22 @@ public class game_manager : MonoBehaviour
     public Camera ship_cam;
 
     public GameObject selected;
+
+    public bool in_build_mode;
     
     // Start is called before the first frame update
     void Start()
     {
         main_cam.enabled = true;
         ship_cam.enabled = false;
+
+        in_build_mode = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && !in_build_mode) {
 
             //Cast a ray from the camera to the mouse position
             Ray ray = main_cam.ScreenPointToRay(Input.mousePosition);
@@ -39,6 +43,9 @@ public class game_manager : MonoBehaviour
                 selected = null;
                 changeCams();
             }
+        }
+        if (Input.GetKeyDown(KeyCode.F)){
+            switchBuildMode();
         }
     }
 
@@ -69,5 +76,16 @@ public class game_manager : MonoBehaviour
         }
 
         return activeCam;
+    }
+
+    public void switchBuildMode()
+    {
+        if(selected != null && !in_build_mode)
+        {
+            in_build_mode = true;
+        } else
+        {
+            in_build_mode = false;
+        }
     }
 }
