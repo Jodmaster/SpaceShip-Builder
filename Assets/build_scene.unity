@@ -1343,7 +1343,6 @@ GameObject:
   - component: {fileID: 1499599930}
   - component: {fileID: 1499599929}
   - component: {fileID: 1499599928}
-  - component: {fileID: 1499599931}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1435,19 +1434,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1499599931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1499599926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8a7470d773ccfa4f85134ec51bc3091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 1499599930}
 --- !u!1 &1883560531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,8 +1445,9 @@ GameObject:
   - component: {fileID: 1883560532}
   - component: {fileID: 1883560534}
   - component: {fileID: 1883560533}
+  - component: {fileID: 1883560535}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Enter_build_prompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1483,7 +1470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -392.2, y: -473.5}
+  m_AnchoredPosition: {x: -129, y: -238}
   m_SizeDelta: {x: 206.6, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1883560533
@@ -1583,3 +1570,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883560531}
   m_CullTransparentMesh: 1
+--- !u!114 &1883560535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883560531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a7470d773ccfa4f85134ec51bc3091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1883560533}

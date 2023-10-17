@@ -44,28 +44,30 @@ public class game_manager : MonoBehaviour
                 changeCams();
             }
         }
+
+        //switch to build mode
         if (Input.GetKeyDown(KeyCode.F)){
             switchBuildMode();
         }
     }
 
+    //responsible for changing between the main cam and the ship cam
     void changeCams() {
         if (selected != null)
         {
             ship_cam.enabled = true;
             main_cam.enabled = false;
             
-            Debug.Log("Main cam is: ship cam");
         }
         else
         {
             main_cam.enabled = true;
             ship_cam.enabled = false;
             
-            Debug.Log("Main cam is: main cam");
         }
     }
 
+    //returns the currently selected cam 
     public Camera selectedCam() {
         Camera activeCam;
 
