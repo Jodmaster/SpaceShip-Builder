@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    private game_manager manager;
     public GameObject bulletPrefab;
     public Transform firePoint;
     public float bulletSpeed = 10f;
     public float fireRate = 0.2f;
 
     private float nextFireTime = 0.0f;
-    
+
+    private void Start() {
+        manager = FindObjectOfType<game_manager>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        //checks that the next fire time has been reached before firing again
-        if (Input.GetKey(KeyCode.Space) && Time.time >= nextFireTime) {
-            Fire();
-            nextFireTime = Time.time + 1.0f / fireRate;
-        }    
+        if (!manager.in_build_mode) {
+            //checks that the next fire time has been reached before firing again
+            if (Input.GetKey(KeyCode.Space) && Time.time >= nextFireTime) {
+                Fire();
+                nextFireTime = Time.time + 1.0f / fireRate;
+            }
+        }
     }
 
     void Fire() {
