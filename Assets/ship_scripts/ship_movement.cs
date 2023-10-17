@@ -31,6 +31,8 @@ public class ship_movement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W)) { rigidBody.AddForce(transform.up * moveSpeed, ForceMode2D.Force); }
             if (Input.GetKey(KeyCode.S)) { rigidBody.AddForce(-transform.up * moveSpeed, ForceMode2D.Force); }
+            if (Input.GetKey(KeyCode.E)) { rigidBody.AddForce(-transform.right * moveSpeed, ForceMode2D.Force); }
+            if (Input.GetKey(KeyCode.Q)) { rigidBody.AddForce(transform.right * moveSpeed, ForceMode2D.Force); }
 
             float rotationInput = Input.GetAxis("Horizontal");
             float desiredRotationSpeed = rotationInput * rotationSpeed;

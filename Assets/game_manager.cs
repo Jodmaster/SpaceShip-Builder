@@ -49,6 +49,8 @@ public class game_manager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F)){
             switchBuildMode();
         }
+
+       
     }
 
     //responsible for changing between the main cam and the ship cam

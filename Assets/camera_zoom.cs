@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class camera_zoom : MonoBehaviour
 {
+    public float moveSpeed = 5.0f;
     public float zoomSpeed = 1.0f;
     public float minZoom = 1.0f;
     public float maxZoom = 5.0f;
+
+    public game_manager manager;
 
     private Camera mainCamera;
     private Vector3 zoomCenter;
@@ -12,6 +15,7 @@ public class camera_zoom : MonoBehaviour
     void Start() {
         mainCamera = Camera.main;
         zoomCenter = Vector3.zero; // You can set this to your desired initial zoom center position.
+        manager = FindObjectOfType<game_manager>(); 
     }
 
     void Update() {
@@ -36,6 +40,19 @@ public class camera_zoom : MonoBehaviour
         // Update the camera's orthographic size and position
         mainCamera.orthographicSize = newZoom;
         mainCamera.transform.position = newPosition;
+
+        if(manager.selected == null) {
+            Camera_Movement();
+        }
+    }
+
+    private void Camera_Movement() {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        Vector3 movement = new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * Time.deltaTime;
+        transform.Translate(movement);
+     
     }
 }
 
