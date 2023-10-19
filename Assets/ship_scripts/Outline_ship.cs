@@ -7,38 +7,21 @@ public class Outline_ship : MonoBehaviour
 
     private ship_manager manager;
 
-    public Material outlineMaterial;
-    private Material[] defaultMaterial;
-    private Renderer meshRenderer;
+    [SerializeField] SpriteRenderer outlineSprite;
 
     // Start is called before the first frame update
     void Start()
     {
-        manager = GetComponent<ship_manager>();
-        meshRenderer = GetComponent<Renderer>();
-
-        defaultMaterial = meshRenderer.materials;
+        manager = GetComponentInParent<ship_manager>();
+        outlineSprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update() {
         if (manager.isSelected) {
-            HighlightObject();
+            outlineSprite.enabled = true;
         } else {
-            UnhighlightObject();
+            outlineSprite.enabled = false;
         }
-    }
-
-    public void HighlightObject() {
-
-        for(int i = 0; i < meshRenderer.materials.Length; i++) {
-            meshRenderer.materials[i] = outlineMaterial;
-        }
-
-        meshRenderer.material.SetFloat("_OutlineWidth", 0.005f);
-    }
-
-    public void UnhighlightObject() {
-        meshRenderer.materials = defaultMaterial;
     }
 }
