@@ -29,16 +29,17 @@ public class ship_movement : MonoBehaviour
         //Input handling
         if (manager.isSelected && !manager.isBuilding)
         {
+
+           //translation
             if (Input.GetKey(KeyCode.W)) { rigidBody.AddForce(transform.up * moveSpeed, ForceMode2D.Force); }
             if (Input.GetKey(KeyCode.S)) { rigidBody.AddForce(-transform.up * moveSpeed, ForceMode2D.Force); }
             if (Input.GetKey(KeyCode.E)) { rigidBody.AddForce(-transform.right * moveSpeed, ForceMode2D.Force); }
             if (Input.GetKey(KeyCode.Q)) { rigidBody.AddForce(transform.right * moveSpeed, ForceMode2D.Force); }
 
+            //rotation
             float rotationInput = Input.GetAxis("Horizontal");
             float desiredRotationSpeed = rotationInput * rotationSpeed;
-
             currentRotationSpeed = Mathf.Lerp(currentRotationSpeed, desiredRotationSpeed, 1.0f - rotationInertia);
-
             transform.RotateAround(pivot.transform.position, Vector3.forward, -currentRotationSpeed * Time.deltaTime);
         }
     }
