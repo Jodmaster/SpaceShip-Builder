@@ -10,11 +10,11 @@ public class camera_zoom : MonoBehaviour
     public game_manager manager;
 
     private Camera mainCamera;
-    private Vector3 zoomCenter;
+    private Vector2 zoomCenter;
 
     void Start() {
         mainCamera = Camera.main;
-        zoomCenter = Vector3.zero; // You can set this to your desired initial zoom center position.
+        zoomCenter = Vector2.zero; // You can set this to your desired initial zoom center position.
         manager = FindObjectOfType<game_manager>(); 
     }
 
@@ -29,13 +29,16 @@ public class camera_zoom : MonoBehaviour
         newZoom = Mathf.Clamp(newZoom, minZoom, maxZoom);
 
         // Calculate the mouse position in world coordinates
-        Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
         // Calculate the zoom ratio
         float zoomRatio = newZoom / mainCamera.orthographicSize;
 
+        //calculates the new position that the camera should move to 
+        Vector2 goalPos = new Vector2(mainCamera.transform.position.x + mouseWorldPosition.x, mainCamera.transform.position.y + mouseWorldPosition.y);
+
         // Calculate the new position of the camera to keep the zoom centered on the mouse position
-        Vector3 newPosition = Vector3.Lerp(mainCamera.transform.position, zoomCenter + (mainCamera.transform.position + mouseWorldPosition) * zoomRatio, 1 - zoomRatio);
+        Vector2 newPosition = Vector2.Lerp(mainCamera.transform.position, zoomCenter + (goalPos) * zoomRatio, 1 - zoomRatio);
 
         // Update the camera's orthographic size and position
         mainCamera.orthographicSize = newZoom;
@@ -50,7 +53,8 @@ public class camera_zoom : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * Time.deltaTime;
+        //moves the camera - speed of this is based on the camera size meaning the camera moves faster at larger sizes 
+        Vector3 movement = new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * mainCamera.orthographicSize/2 * Time.deltaTime;
         transform.Translate(movement);
      
     }
