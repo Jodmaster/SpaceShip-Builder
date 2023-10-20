@@ -1,6 +1,10 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public class ship_movement : MonoBehaviour
 {
@@ -13,7 +17,10 @@ public class ship_movement : MonoBehaviour
     [SerializeField] float rotationSpeed = 5f;
     [SerializeField] float rotationInertia = 0.9f;
 
+ 
+    private Vector2 deadSpeed = Vector2.zero;
     private float currentRotationSpeed = 0.0f;
+   
     
     // Start is called before the first frame update
     void Start()
@@ -30,7 +37,7 @@ public class ship_movement : MonoBehaviour
         if (manager.isSelected && !manager.isBuilding)
         {
 
-           //translation
+            //translation
             if (Input.GetKey(KeyCode.W)) { rigidBody.AddForce(transform.up * moveSpeed, ForceMode2D.Force); }
             if (Input.GetKey(KeyCode.S)) { rigidBody.AddForce(-transform.up * moveSpeed, ForceMode2D.Force); }
             if (Input.GetKey(KeyCode.E)) { rigidBody.AddForce(-transform.right * moveSpeed, ForceMode2D.Force); }
@@ -41,6 +48,9 @@ public class ship_movement : MonoBehaviour
             float desiredRotationSpeed = rotationInput * rotationSpeed;
             currentRotationSpeed = Mathf.Lerp(currentRotationSpeed, desiredRotationSpeed, 1.0f - rotationInertia);
             transform.RotateAround(pivot.transform.position, Vector3.forward, -currentRotationSpeed * Time.deltaTime);
+
+            
+
         }
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class Build_menu_contoller : MonoBehaviour
 {
@@ -20,6 +20,10 @@ public class Build_menu_contoller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(manager.selected != null){
+            build_menu.enabled = true;
+        } else {
+            build_menu.enabled = false;
+        }
     }
 }
