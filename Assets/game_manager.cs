@@ -39,7 +39,11 @@ public class game_manager : MonoBehaviour
                     changeCams();
                 }
             
-            } else {
+            } 
+        }
+
+        if(selected != null) {
+            if (Input.GetKeyDown(KeyCode.Escape)) {
                 selected = null;
                 changeCams();
             }
