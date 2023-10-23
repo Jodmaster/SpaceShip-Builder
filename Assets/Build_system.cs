@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Build_system : MonoBehaviour
 {
-
+    public game_manager gameManager;
     public LayerMask snapLayer;
     public float snapDistance = 1.0f;
 
@@ -19,6 +19,8 @@ public class Build_system : MonoBehaviour
     {
         originalLocalPosition = transform.localPosition;
         originalLocalPosition = transform.localPosition;
+
+        gameManager = FindObjectOfType<game_manager>();
     }
 
     // Update is called once per frame
@@ -34,14 +36,14 @@ public class Build_system : MonoBehaviour
     }
 
     private void MoveTogetherWithParent() {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePosition = gameManager.activeCam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 offset = mousePosition - transform.position;
 
         transform.position = snapTarget.position + offset;
     }
 
     private void TrySnapToNearestAttachmentPoint() {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePosition = gameManager.activeCam.ScreenToWorldPoint(Input.mousePosition);
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(mousePosition, snapDistance, snapLayer);
 
         if(hitColliders.Length > 0) {

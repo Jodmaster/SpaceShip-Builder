@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Button_controller : MonoBehaviour
 {
@@ -10,12 +11,16 @@ public class Button_controller : MonoBehaviour
     public Image image;
     public Button button;
 
+    public TMP_Text button_text;
+
     // Start is called before the first frame update
     void Start()
     {
         manager = FindObjectOfType<game_manager>();
         image = GetComponent<Image>(); 
         button = GetComponent<Button>();
+
+        button_text = GetComponentInChildren<TMP_Text>();
 
         image.enabled = false;
         button.enabled = false;
@@ -28,11 +33,13 @@ public class Button_controller : MonoBehaviour
         {
             image.enabled = true;
             button.enabled = true;
+            button_text.enabled = true;
         }
         else
         {
             image.enabled=false;
             button.enabled=false;
+            button_text.enabled = false;
         }
     }
 }

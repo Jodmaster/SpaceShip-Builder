@@ -1421,6 +1421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b274c8b14ec724586f3328b7136ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  build_menu: {fileID: 0}
 --- !u!1 &1329138692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1982,6 +1983,7 @@ GameObject:
   - component: {fileID: 1848043068}
   - component: {fileID: 1848043067}
   - component: {fileID: 1848043066}
+  - component: {fileID: 1848043069}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2005,10 +2007,10 @@ RectTransform:
   m_Father: {fileID: 1499599927}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.29, y: 0.03}
-  m_AnchorMax: {x: 0.315, y: 0.08}
-  m_AnchoredPosition: {x: -1, y: 1.7000122}
-  m_SizeDelta: {x: 122.28998, y: 114.66}
+  m_AnchorMin: {x: 0.285, y: 0.035}
+  m_AnchorMax: {x: 0.315, y: 0.09}
+  m_AnchoredPosition: {x: 3.5, y: -2.2999878}
+  m_SizeDelta: {x: 113.28998, y: 109.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1848043066
 MonoBehaviour:
@@ -2031,9 +2033,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 0.68330365, g: 0.7239292, b: 0.7924528, a: 1}
+    m_HighlightedColor: {r: 0, g: 0.017255351, b: 0.9811321, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -2092,6 +2094,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848043064}
   m_CullTransparentMesh: 1
+--- !u!114 &1848043069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848043064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd48c960a145c4d43be6bdfda51cad6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1848043067}
+  button: {fileID: 1848043066}
+  button_text: {fileID: 0}
 --- !u!1 &1883560531
 GameObject:
   m_ObjectHideFlags: 0

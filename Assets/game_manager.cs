@@ -7,6 +7,8 @@ public class game_manager : MonoBehaviour
     public Camera main_cam;
     public Camera ship_cam;
 
+    public Camera activeCam;
+
     public GameObject selected;
 
     public bool in_build_mode;
@@ -43,7 +45,7 @@ public class game_manager : MonoBehaviour
         }
 
         if(selected != null) {
-            if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (Input.GetKeyDown(KeyCode.Escape) && !in_build_mode) {
                 selected = null;
                 changeCams();
             }
@@ -75,7 +77,6 @@ public class game_manager : MonoBehaviour
 
     //returns the currently selected cam 
     public Camera selectedCam() {
-        Camera activeCam;
 
         if(main_cam.enabled == true) {
             activeCam = main_cam;
