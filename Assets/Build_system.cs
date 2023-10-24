@@ -7,20 +7,18 @@ public class Build_system : MonoBehaviour
 {
     public game_manager gameManager;
     public LayerMask snapLayer;
-    public float snapDistance = 1.0f;
+    public float snapDistance = 5.0f;
 
     private bool isSnapped = false;
     private Transform snapTarget;
-    private Vector3 originalLocalPosition;
+    private Vector2 originalLocalPosition;
     private Quaternion originalLocalRotation;
 
     // Start is called before the first frame update
     void Start()
     {
-        originalLocalPosition = transform.localPosition;
-        originalLocalPosition = transform.localPosition;
-
         gameManager = FindObjectOfType<game_manager>();
+        originalLocalPosition = gameManager.activeCam.ScreenToWorldPoint(Input.mousePosition);
     }
 
     // Update is called once per frame
@@ -71,8 +69,6 @@ public class Build_system : MonoBehaviour
 
         else {
             isSnapped = false;
-            transform.localPosition = originalLocalPosition;
-            transform.localRotation = originalLocalRotation;
         }
     }
 }
